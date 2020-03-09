@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+
+.weather-icons {
+  margin: 0 0 30px 0;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+.wi {
+  font-size: 6em;
+}
