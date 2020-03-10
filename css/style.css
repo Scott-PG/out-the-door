@@ -9,6 +9,10 @@ body {
   font-family: "Varela Round", sans-serif;
   color: #333333;
   display: flex;
+  background-image: url(../pattern/spiration-light.png);
+  /* Background pattern from Toptal Subtle Patterns */
+  background-position: center;
+  background-repeat: repeat;
 }
 
 a {
@@ -32,7 +36,6 @@ main {
     "h . . . . ."
     "h . w . n ."
     "h . . . . .";
-  background-color: #fcfcfc;
 }
 
 /* Header Styling */
@@ -139,7 +142,7 @@ input {
 }
 
 .weather-conditions {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .forecast-title {
@@ -177,8 +180,7 @@ input {
 }
 
 .headline-div {
-  width: 100%;
-  padding: 8px;
+  width: 99%;
 }
 
 .headline-div h4 {
