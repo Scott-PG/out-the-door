@@ -19,10 +19,44 @@
     ></script>
   </head>
   <body>
-    <form>
-      <input type="text" name="city" value="" placeholder="City" id="city" />
-      <input type="submit" value="Go" id="getTemp" />
-    </form>
-    <div class="weather-div"></div>
+    <main>
+      <header>
+        <a class="logo" href="#">Out The Door</a>
+        <nav>
+          <form>
+            <input
+              type="text"
+              name="city"
+              value=""
+              placeholder="City"
+              id="city"
+            />
+            <input type="submit" value="Go" id="getTemp" />
+          </form>
+          <a class="nav-link" href="#">Weather</a>
+          <a class="nav-link" href="#">News</a>
+        </nav>
+        <p class="header-credits">
+          Designed by ScottPG<br /><br />Data provided by
+          <a href="https://openweathermap.org/api">OpenWeather</a> and
+          <a href="https://newsapi.org/">newsAPI</a><br /><br />Weather Icons
+          courtesy of
+          <a href="https://github.com/erikflowers/weather-icons">Erik Flowers</a
+          ><br /><br />&copy;2020
+        </p>
+      </header>
+      <div class="weather-div"></div>
+      <div class="news-div"></div>
+      <footer>
+        <p>
+          Designed by ScottPG<br /><br />Data provided by
+          <a href="https://openweathermap.org/api">OpenWeather</a> and
+          <a href="https://newsapi.org/">newsAPI</a><br /><br />Weather Icons
+          courtesy of
+          <a href="https://github.com/erikflowers/weather-icons">Erik Flowers</a
+          ><br /><br />&copy;2020
+        </p>
+      </footer>
+    </main>
   </body>
 </html>

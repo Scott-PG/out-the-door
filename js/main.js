@@ -1,10 +1,29 @@
+// Global Stuff
+// ===============================================
+// Global Variables
 const weatherUrl = "http://api.openweathermap.org/data/2.5/";
 const weatherApiKey = "57e8e95b6fc9af21a7275dbba8b586e2";
+
+const newApiKey = "480a960d4e99423fa9b31e3837cc6410";
+const newsURL = "http://newsapi.org/v2/";
 
 const submit = document.querySelector("#getTemp");
 const weatherInput = document.querySelector("#city");
 const weatherDiv = document.querySelector(".weather-div");
+const newsDiv = document.querySelector(".news-div");
 
+// Make function that capitalizes the first letter of each word since CSS cannot
+// Use this throughout
+const titleCase = str => {
+  str = str.toLowerCase().split(" ");
+  str = str.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  str = str.join(" ");
+  return str;
+};
+
+// Weather Scripting
+// ================================================
+// Set Color classes
 const tempColor = temp => {
   let color = "";
   if (temp < 40) {
@@ -12,7 +31,7 @@ const tempColor = temp => {
   } else if (temp >= 40 && temp < 60) {
     color = "navy";
   } else if (temp >= 60 && temp < 80) {
-    color = "black";
+    color = "purple";
   } else if (temp >= 80 && temp < 90) {
     color = "burgundy";
   } else if (temp >= 90) {
@@ -32,6 +51,7 @@ submit.addEventListener("click", async () => {
   let forecast = await axios.get(
     `${weatherUrl}forecast?q=${zipCity}&units=imperial&appid=${weatherApiKey}&cnt=3`
   );
+  weatherInput.value = "";
   // Clean up response data
   let rawCurrent = currentWeather.data;
   let rawForecast = forecast.data.list;
@@ -39,6 +59,7 @@ submit.addEventListener("click", async () => {
   buildForecastCard(rawForecast);
 });
 
+// Build Current weather
 const buildWeatherCard = rawData => {
   let cityName = rawData.name;
   let currentTemp = Math.round(rawData.main.temp);
@@ -86,10 +107,11 @@ const buildWeatherCard = rawData => {
   weatherDiv.appendChild(tempsP);
 };
 
+// Build forecast with icons
 const buildForecastCard = rawData => {
   // Title the top of the foreforecast div
   let forecastH3 = document.createElement("h3");
-  forecastH3.className = "city-title";
+  forecastH3.className = "forecast-title";
   forecastH3.innerText = `Forecast over the next 6 Hours`;
   weatherDiv.appendChild(forecastH3);
   // Create forecast holder Div
@@ -120,10 +142,43 @@ const buildForecastCard = rawData => {
   weatherDiv.appendChild(forecastDiv);
 };
 
-// Make function that capitalizes the first letter of each word since CSS cannot
-const titleCase = str => {
-  str = str.toLowerCase().split(" ");
-  str = str.map(word => word.charAt(0).toUpperCase() + word.slice(1));
-  str = str.join(" ");
-  return str;
+// News Scripting
+// ================================================
+const getHeadlines = async () => {
+  let resp = await axios.get(
+    `${newsURL}top-headlines?country=us&category=general&pageSize=5&apiKey=${newApiKey}`
+  );
+  let rawNewsData = resp.data.articles;
+  buildNewsCard(rawNewsData);
+};
+getHeadlines();
+
+// Build News Card
+
+const buildNewsCard = rawData => {
+  // Clean out the news Div
+  newsDiv.innerHTML = "";
+  // Title the top of the news div
+  let newsH3 = document.createElement("h3");
+  newsH3.className = "news-title";
+  newsH3.innerText = `Top Headlines`;
+  newsDiv.appendChild(newsH3);
+  // Create img from first article's image url
+  let newsImg = document.createElement("img");
+  newsImg.className = "news-img";
+  newsImg.src = rawData[0].urlToImage;
+  newsDiv.appendChild(newsImg);
+  // Create headline Div
+  let headlineDiv = document.createElement("div");
+  headlineDiv.className = "headline-div";
+  // Go through the article array to pull stories and create links
+  rawData.forEach(article => {
+    let headline = document.createElement("h4");
+    let headlineLink = document.createElement("a");
+    headlineLink.href = article.url;
+    headlineLink.innerText = article.title;
+    headline.appendChild(headlineLink);
+    headlineDiv.appendChild(headline);
+  });
+  newsDiv.appendChild(headlineDiv);
 };
