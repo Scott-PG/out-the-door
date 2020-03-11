@@ -59,6 +59,44 @@ submit.addEventListener("click", async () => {
   buildForecastCard(rawForecast);
 });
 
+const getWeather = async (lat, lon) => {
+  let currentWeather = await axios.get(
+    `${weatherUrl}weather?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`
+  );
+  let forecast = await axios.get(
+    `${weatherUrl}forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}&cnt=3`
+  );
+  weatherInput.value = "";
+  // Clean up response data
+  let rawCurrent = currentWeather.data;
+  let rawForecast = forecast.data.list;
+  buildWeatherCard(rawCurrent);
+  buildForecastCard(rawForecast);
+};
+
+// Get current latitude and longitude, round down
+const getLatLon = async () => {
+  function success(position) {
+    const lat = Math.round(position.coords.latitude * 1000) / 1000;
+    const lon = Math.round(position.coords.longitude * 1000) / 1000;
+    getWeather(lat, lon);
+  }
+
+  function error() {
+    status.textContent =
+      "Unable to retrieve your location.  For weather, enter location manually.";
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = "Geolocation is not supported by your browser";
+  } else {
+    status.textContent = "Locating…";
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+};
+
+getLatLon();
+
 // Build Current weather
 const buildWeatherCard = rawData => {
   let cityName = rawData.name;
