@@ -96,6 +96,7 @@ const buildWeatherCard = rawData => {
   weatherDiv.appendChild(conditionsP);
   // Add and append temperatures to overall forecast with colors
   let tempsP = document.createElement("p");
+  tempsP.className = "temps";
   tempsP.innerHTML = `The current temperature is <span class="${tempColor(
     currentTemp
   )}">${currentTemp}\xB0F</span>. <br/>
@@ -177,6 +178,7 @@ const buildNewsCard = rawData => {
     let headlineLink = document.createElement("a");
     headlineLink.href = article.url;
     headlineLink.innerText = article.title;
+    headlineLink.target = "_blank";
     headline.appendChild(headlineLink);
     headlineDiv.appendChild(headline);
   });

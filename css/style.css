@@ -6,7 +6,8 @@
 }
 body {
   text-align: center;
-  font-family: "Varela Round", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   color: #333333;
   display: flex;
   background-image: url(../pattern/spiration-light.png);
@@ -44,15 +45,16 @@ header {
   flex-direction: column;
   justify-content: space-between;
   grid-area: h;
-  background-color: white;
-  border-right: solid #ccc 1px;
-  box-shadow: 0 0 7px #aaa;
+  background-color: #610f0f;
+  border-right: solid #4d0606 1px;
+  box-shadow: 0 0 9px #999;
 }
 
 .logo {
   margin: 30px 0;
-  font-family: "Varela Round", sans-serif;
+  font-family: "Sen", sans-serif;
   font-size: 1.3rem;
+  color: white;
 }
 
 nav {
@@ -61,11 +63,17 @@ nav {
   justify-content: space-between;
   height: 20%;
   margin-bottom: 5vh;
+  color: white;
+}
+
+.nav-link {
+  color: white;
+  font-family: "Sen", sans-serif;
 }
 
 input {
-  border: solid 2px #333333;
-  font-family: "Varela Round", sans-serif;
+  border: solid 2px white;
+  font-family: "Sen", sans-serif;
 }
 
 #city {
@@ -84,14 +92,37 @@ input {
 
 .header-credits {
   margin: 30px 0;
-  font-weight: lighter;
+  color: white;
+  padding: 0 10px;
+  font-size: 0.8em;
+}
+
+.header-credits a {
+  margin: 30px 0;
+  color: white;
 }
 
 /* Weather styling */
 .weather-div {
   grid-area: w;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 30px 40px 1fr 140px 20px 20px 20px 40px 2fr 30px 20px 75px 1fr 30px;
+  grid-template-areas:
+    ". . ."
+    ". a ."
+    ". . ."
+    ". e ."
+    ". . ."
+    ". c ."
+    ". . ."
+    ". t ."
+    ". . ."
+    ". f ."
+    ". . ."
+    ". i ."
+    ". . ."
+    ". . .";
   align-items: center;
   justify-content: space-between;
   border-radius: 15px;
@@ -101,14 +132,16 @@ input {
 }
 
 .city-title {
-  margin: 30px 0 20px 0;
+  font-family: "Sen", sans-serif;
   font-size: 2rem;
+  grid-area: a;
 }
 
 .weather-icons {
-  margin: 15% auto 0;
   color: #333333;
-  width: 75%;
+  width: 100%;
+  text-align: center;
+  grid-area: e;
 }
 
 .blue {
@@ -138,31 +171,41 @@ input {
 .forecast {
   display: flex;
   justify-content: center;
-  margin: 0 0 20%;
+  grid-area: i;
 }
 
 .weather-conditions {
-  margin-top: 30px;
+  grid-area: c;
+  font-size: 1.2em;
 }
 
+.temps {
+  grid-area: t;
+  font-size: 1.2em;
+}
 .forecast-title {
-  margin: 25% 0 10px 0;
-}
-
-.hour-div {
-  margin: 0 10px;
+  grid-area: f;
+  font-family: "Sen", sans-serif;
 }
 
 .forecast-icon {
   font-size: 3em;
+  margin: 0 10px 10px;
 }
 
 /* News Styling */
 .news-div {
   grid-area: n;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 30px 50px 250px 10px auto 10px;
+  grid-template-areas:
+    ". . ."
+    ". t ."
+    "i i i"
+    ". . ."
+    ". h ."
+    ". . .";
   border-radius: 15px;
   border: solid #ccc 1px;
   box-shadow: 0 0 7px #aaa;
@@ -170,23 +213,27 @@ input {
 }
 
 .news-title {
-  margin: 30px 0 20px 0;
+  font-family: "Sen", sans-serif;
   font-size: 2rem;
+  grid-area: t;
 }
 .news-img {
   width: 100%;
+  max-height: 250px;
   object-fit: contain;
   overflow: hidden;
+  grid-area: i;
 }
 
 .headline-div {
-  width: 99%;
+  grid-area: h;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
 .headline-div h4 {
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
-
 /* Bottom Credits on Desktop */
 footer {
   display: none;
