@@ -223,6 +223,7 @@ input {
   object-fit: contain;
   overflow: hidden;
   grid-area: i;
+  align-self: flex-end;
 }
 
 .headline-div {
@@ -237,4 +238,287 @@ input {
 /* Bottom Credits on Desktop */
 footer {
   display: none;
+}
+
+/* Flip orientation on a portrait screen */
+@media screen and (orientation: portrait) {
+  html {
+    font-size: 16px;
+  }
+
+  main {
+    display: grid;
+    height: auto;
+    width: 100vw;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 100px 20px 1fr 20px 1fr 20px 160px;
+    grid-template-areas:
+      "h h h"
+      ". . ."
+      ". w ."
+      ". . ."
+      ". n ."
+      ". . ."
+      "f f f";
+  }
+
+  /* Header/Nav stuff */
+  header {
+    flex-direction: row;
+    align-items: center;
+    grid-area: h;
+    border-bottom: solid #4d0606 1px;
+    padding: 0 30px;
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  .header-credits {
+    display: none;
+  }
+
+  /* Weather */
+  .weather-div {
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 30px 70px 1fr 140px 20px 20px 20px 70px 1fr 30px 20px 75px 1fr 30px;
+  }
+  /* Footer */
+  footer {
+    display: flex;
+    grid-area: f;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #610f0f;
+    border-top: solid #4d0606 1px;
+    padding: 0 0 20px;
+  }
+
+  footer p a {
+    color: white;
+  }
+  footer p {
+    margin-top: 20px;
+  }
+}
+
+/* Resize when content gets too small */
+@media only screen and (max-width: 950px) {
+  /* Global Rules */
+  html {
+    font-size: 16px;
+  }
+
+  main {
+    display: grid;
+    height: auto;
+    width: 100vw;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 100px 20px 1fr 20px 1fr 20px 100px;
+    grid-template-areas:
+      "h h h"
+      ". . ."
+      ". w ."
+      ". . ."
+      ". n ."
+      ". . ."
+      "f f f";
+  }
+
+  /* Header/Nav stuff */
+  header {
+    flex-direction: row;
+    align-items: center;
+    grid-area: h;
+    border-bottom: solid #4d0606 1px;
+    padding: 0 30px;
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  .header-credits {
+    display: none;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    grid-area: f;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #610f0f;
+    border-top: solid #4d0606 1px;
+    padding: 0 30px;
+  }
+
+  footer p a {
+    color: white;
+  }
+}
+
+/* Smaller width to keep nav bar and footer from breaking */
+@media only screen and (max-width: 550px) {
+  /* Global Rules */
+  html {
+    font-size: 16px;
+  }
+
+  main {
+    display: grid;
+    height: auto;
+    width: 100vw;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 100px 20px 1fr 20px 1fr 20px 160px;
+    grid-template-areas:
+      "h h h"
+      ". . ."
+      ". w ."
+      ". . ."
+      ". n ."
+      ". . ."
+      "f f f";
+  }
+  /* Header/Nav stuff */
+  header {
+    flex-direction: row;
+    align-items: center;
+    grid-area: h;
+    border-bottom: solid #4d0606 1px;
+    padding: 0 30px;
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 80px;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  .header-credits {
+    display: none;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    grid-area: f;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #610f0f;
+    border-top: solid #4d0606 1px;
+    padding: 0 0 20px;
+  }
+
+  footer p a {
+    color: white;
+  }
+  footer p {
+    margin-top: 20px;
+  }
+}
+
+/* Smaller width to keep nav bar and footer from breaking */
+@media only screen and (max-width: 350px) {
+  /* Global Rules */
+  html {
+    font-size: 16px;
+  }
+
+  main {
+    display: grid;
+    height: auto;
+    width: 100vw;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 150px 20px 1fr 20px 1fr 20px 200px;
+    grid-template-areas:
+      "h h h"
+      ". . ."
+      ". w ."
+      ". . ."
+      ". n ."
+      ". . ."
+      "f f f";
+  }
+  /* Header/Nav stuff */
+  header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: h;
+    border-bottom: solid #4d0606 1px;
+    padding: 15px 0;
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 80px;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  .header-credits {
+    display: none;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    grid-area: f;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #610f0f;
+    border-top: solid #4d0606 1px;
+    padding: 0 0 20px;
+  }
+
+  footer p a {
+    color: white;
+  }
+  footer p {
+    margin-top: 20px;
+    word-wrap: break-word;
+  }
 }
