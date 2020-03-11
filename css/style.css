@@ -249,9 +249,10 @@ footer {
   main {
     display: grid;
     height: auto;
+    min-height: 100vh;
     width: 100vw;
     grid-template-columns: 20px 1fr 20px;
-    grid-template-rows: 100px 20px 1fr 20px 1fr 20px 160px;
+    grid-template-rows: 100px 20px 1fr 20px 1fr 20px 100px;
     grid-template-areas:
       "h h h"
       ". . ."
@@ -297,20 +298,20 @@ footer {
   footer {
     display: flex;
     grid-area: f;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     color: white;
     background-color: #610f0f;
     border-top: solid #4d0606 1px;
-    padding: 0 0 20px;
+    padding: 0 30px;
   }
 
   footer p a {
     color: white;
   }
   footer p {
-    margin-top: 20px;
+    margin-top: 0px;
   }
 }
 
