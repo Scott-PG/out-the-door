@@ -1,11 +1,11 @@
 // Global Stuff
 // ===============================================
 // Global Variables
-const weatherUrl = "http://api.openweathermap.org/data/2.5/";
+const weatherUrl = "https://api.openweathermap.org/data/2.5/";
 const weatherApiKey = "57e8e95b6fc9af21a7275dbba8b586e2";
 
 const newApiKey = "480a960d4e99423fa9b31e3837cc6410";
-const newsURL = "http://newsapi.org/v2/";
+const newsURL = "https://newsapi.org/v2/";
 
 const submit = document.querySelector("#getTemp");
 const weatherInput = document.querySelector("#city");
