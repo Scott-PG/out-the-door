@@ -1,11 +1,11 @@
 // Global Stuff
 // ===============================================
 // Global Variables
-const weatherUrl = "http://api.openweathermap.org/data/2.5/";
+const weatherUrl = "https://api.openweathermap.org/data/2.5/";
 const weatherApiKey = "57e8e95b6fc9af21a7275dbba8b586e2";
 
 const newApiKey = "480a960d4e99423fa9b31e3837cc6410";
-const newsURL = "http://newsapi.org/v2/";
+const newsURL = "https://newsapi.org/v2/";
 
 const submit = document.querySelector("#getTemp");
 const weatherInput = document.querySelector("#city");
@@ -58,6 +58,44 @@ submit.addEventListener("click", async () => {
   buildWeatherCard(rawCurrent);
   buildForecastCard(rawForecast);
 });
+
+const getWeather = async (lat, lon) => {
+  let currentWeather = await axios.get(
+    `${weatherUrl}weather?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`
+  );
+  let forecast = await axios.get(
+    `${weatherUrl}forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}&cnt=3`
+  );
+  weatherInput.value = "";
+  // Clean up response data
+  let rawCurrent = currentWeather.data;
+  let rawForecast = forecast.data.list;
+  buildWeatherCard(rawCurrent);
+  buildForecastCard(rawForecast);
+};
+
+// Get current latitude and longitude, round down
+const getLatLon = async () => {
+  function success(position) {
+    const lat = Math.round(position.coords.latitude * 1000) / 1000;
+    const lon = Math.round(position.coords.longitude * 1000) / 1000;
+    getWeather(lat, lon);
+  }
+
+  function error() {
+    status.textContent =
+      "Unable to retrieve your location.  For weather, enter location manually.";
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = "Geolocation is not supported by your browser";
+  } else {
+    status.textContent = "Locating…";
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+};
+
+getLatLon();
 
 // Build Current weather
 const buildWeatherCard = rawData => {

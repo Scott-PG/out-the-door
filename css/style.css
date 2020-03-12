@@ -74,6 +74,8 @@ nav {
 input {
   border: solid 2px white;
   font-family: "Sen", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 #city {
@@ -88,6 +90,7 @@ input {
   width: 30px;
   height: 19px;
   text-align: center;
+  background-color: white;
 }
 
 .header-credits {
@@ -304,6 +307,7 @@ footer {
     color: white;
     background-color: #610f0f;
     border-top: solid #4d0606 1px;
+    box-shadow: 0 0 9px #999;
     padding: 0 30px;
   }
 
@@ -374,6 +378,7 @@ footer {
     color: white;
     background-color: #610f0f;
     border-top: solid #4d0606 1px;
+    box-shadow: 0 0 9px #999;
     padding: 0 30px;
   }
 
@@ -441,6 +446,7 @@ footer {
     color: white;
     background-color: #610f0f;
     border-top: solid #4d0606 1px;
+    box-shadow: 0 0 9px #999;
     padding: 0 0 20px;
   }
 
@@ -512,6 +518,7 @@ footer {
     color: white;
     background-color: #610f0f;
     border-top: solid #4d0606 1px;
+    box-shadow: 0 0 9px #999;
     padding: 0 0 20px;
   }
 
