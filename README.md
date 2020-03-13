@@ -11,13 +11,13 @@ I want a simplified news reader and weather app that boils down the days conditi
 
 ## Wireframes:
 ### Desktop and Landscape Tablet Wireframe:  
-![](desktop-wireframe.png)
+![](wireframes/desktop-wireframe.png)
 
 ### Portrait Tablet Wireframe:
-![](tablet-wireframe.png)
+![](wireframes/tablet-wireframe.png)
 
 ### Phone Wireframe:
-![](mobile-wireframe.png)
+![](wireframes/mobile-wireframe.png)
 
 ## APIs
 - Weather: https://openweathermap.org/api
@@ -32,8 +32,16 @@ I want a simplified news reader and weather app that boils down the days conditi
 - Present only the headlines and not send readers down a feed rabbithole.
 - Use flexbox to dynamically resize the information.
 
-## Post-MVP
+## Post-MVP, Proposed
 - After initial zipcode request, store that in a cookie locally.
 - If NYC zipcode is detected, possibly add the MTA javascript widget (though it's ugly).
 - Light and Dark mode depending on time of day and sunrise/sunset.
 - Option to replace news with a todo list.
+
+## Post-MVP, Actual
+- Instead of using local storage, I created a geolocation module that fed simplified latitude and longitude (Accurate to neighborhood, not address) to a weather service.
+- Reformatted code to force an HTTPS connection so that geolocation could be utilized.
+- Changed design goals to be responsive on pretty much any device.
+
+## Post-Project Design Goals
+- The option to change the weather to Celcius.  I'm figuring out the coding necessary to do this and how that option would be presented.  Mostly, I want the option to be unobtrusive, easy to understand, and persistent, so I'm going to need to dig into local storage to save that information.
