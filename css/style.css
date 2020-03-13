@@ -459,7 +459,7 @@ footer {
 }
 
 /* Smaller width to keep nav bar and footer from breaking */
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 385px) {
   /* Global Rules */
   html {
     font-size: 17px;
@@ -469,16 +469,16 @@ footer {
     display: grid;
     height: auto;
     width: 100vw;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: 1fr;
     grid-template-rows: 150px 20px 1fr 20px 1fr 20px 200px;
     grid-template-areas:
-      "h h h"
-      ". . ."
-      ". w ."
-      ". . ."
-      ". n ."
-      ". . ."
-      "f f f";
+      "h"
+      "."
+      "w"
+      "."
+      "n"
+      "."
+      "f";
   }
   /* Header/Nav stuff */
   header {
@@ -506,6 +506,30 @@ footer {
 
   .header-credits {
     display: none;
+  }
+  /* Weather area */
+  .weather-div {
+    grid-template-columns: 10px 1fr 10px;
+    grid-template-rows: 30px 40px 1fr 140px 20px 20px 20px 70px 2fr 30px 20px 75px 1fr 30px;
+    grid-template-areas:
+      ". . ."
+      ". a ."
+      ". . ."
+      ". e ."
+      ". . ."
+      ". c ."
+      ". . ."
+      ". t ."
+      ". . ."
+      ". f ."
+      ". . ."
+      ". i ."
+      ". . ."
+      ". . .";
+  }
+
+  .weather-icons i {
+    font-size: 7em;
   }
 
   /* Footer */
