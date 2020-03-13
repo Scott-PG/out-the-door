@@ -137,6 +137,7 @@ input {
 .city-title {
   font-family: "Sen", sans-serif;
   font-size: 2rem;
+  align-self: flex-start;
   grid-area: a;
 }
 
@@ -510,7 +511,7 @@ footer {
   /* Weather area */
   .weather-div {
     grid-template-columns: 10px 1fr 10px;
-    grid-template-rows: 30px 40px 1fr 140px 20px 20px 20px 70px 2fr 30px 20px 75px 1fr 30px;
+    grid-template-rows: 30px 90px 1fr 140px 20px 20px 20px 70px 1fr 30px 20px 75px 1fr 30px;
     grid-template-areas:
       ". . ."
       ". a ."
